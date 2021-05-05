@@ -11,7 +11,7 @@ namespace ExplosionAPI.Controllers
     [ApiController]
     public class ExplosionController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("{string")]
         public static string Explode(string s)
         {
             var explodeStr = "";

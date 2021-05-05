@@ -11,7 +11,7 @@ namespace ExplosionAPI.Controllers
     [ApiController]
     public class MumblingController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("{string")]
         public static string Mumble(string s)
         {
             var mumbleStr = "";
