@@ -27,8 +27,8 @@ namespace ExplosionAPI
             // Use NewtonsoftJson to avoid JSON cyclical loops
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            // Add support for CORS which allow cross domain access to the API
-            services.AddCors();
+            // Our application will use controllers
+            services.AddControllers();
 
             // Configure the Swagger documentation engine to generate documentation for our API
             services.AddSwaggerGen(c =>
@@ -51,14 +51,13 @@ namespace ExplosionAPI
                 // give away code secrets.
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // Only enforce https in production
-                app.UseHttpsRedirection();
 
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            // Only enforce https in production
+            app.UseHttpsRedirection();
+
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+
 
             // Configure CORS to allow access from everywhere
             app.UseCors(builder =>
